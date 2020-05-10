@@ -9,6 +9,6 @@
   },
   "scripts": {
 	"start": "yarn run lite",
-	 "lite": "lite-server"
+	"lite": "lite-server"
   }
 }
