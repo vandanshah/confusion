@@ -11,7 +11,7 @@ class DishdetailedComponent extends Component{
     renderDish(dish){
         if(dish != null){
             return(
-                    <div className="row">
+                    <div className = "row">
                         <div className = "col-12 col-md-5 m-1">
                             <Card>
                                 <CardImg width="100%" src = {dish.image} alt={dish.name}></CardImg>
@@ -25,7 +25,7 @@ class DishdetailedComponent extends Component{
                             <h4> Comments </h4>
                             {this.renderComments(dish.comments)}
                         </div>
-                    </div> 
+                    </div>
                 );
             }
         else{
@@ -56,7 +56,7 @@ class DishdetailedComponent extends Component{
     render(){
 
         return(
-            <div>
+            <div className = "container">
                 {this.renderDish(this.props.dish)}
             </div>
         );

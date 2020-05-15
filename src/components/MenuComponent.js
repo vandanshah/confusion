@@ -6,16 +6,16 @@ class Menu extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
+       /* this.state = {
            selectedDish: null
-            };
+            };*/
         console.log('MenuComponent constructor is invoked.');
     }
 
-    onDishSelect(dish){
+    /*onDishSelect(dish){
         console.log(dish.name);
         this.setState({selectedDish:dish});
-    }
+    }*/
 
     /*renderDish(dish){
         if(dish != null)
@@ -51,12 +51,19 @@ class Menu extends Component{
         const menu = this.props.dishes.map((dish) => {
             return(
                 <div key = {dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
+                    {/*<Card onClick={() => this.onDishSelect(dish)}>
+                        <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
+                        <CardImgOverlay>
+                            <CardTitle>{dish.name}</CardTitle>
+                            </CardImgOverlay>
+            </Card>*/}
+                    <Card onClick={()=> this.props.onClick(dish.id)}>
                         <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
                             </CardImgOverlay>
                     </Card>
+
                 </div>
             ); 
         });
@@ -65,14 +72,8 @@ class Menu extends Component{
                 <div className = "row">
                     {menu}
                 </div>
-                <div className="row">
-                    <DishdetailedComponent dish={this.state.selectedDish} />
-                </div>  
-            </div>
-                    
-           
-            
-           
+                {/*<DishdetailedComponent dish={this.state.selectedDish} /> */}  
+            </div>   
         );
         
     }
