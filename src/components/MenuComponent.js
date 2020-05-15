@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { Card, CardBody, CardText, CardImg, CardImgOverlay, CardTitle } 
 from 'reactstrap';
-
+import DishdetailedComponent from './DishdetailComponent';
 class Menu extends Component{
     constructor(props){
         super(props);
@@ -9,23 +9,30 @@ class Menu extends Component{
         this.state = {
            selectedDish: null
             };
+        console.log('MenuComponent constructor is invoked.');
     }
 
     onDishSelect(dish){
+        console.log(dish.name);
         this.setState({selectedDish:dish});
     }
 
-    renderDish(dish){
+    /*renderDish(dish){
         if(dish != null)
         {
+            console.log(dish.name);
             return(
-                <card>
+                <div className="container">
+                   {/* <Card>
                     <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText> 
                     </CardBody>
-                </card>
+                   </Card> 
+                  
+                    <DishdetailComponent dish={dish} />
+                </div>
             ); 
         }
         else
@@ -34,8 +41,13 @@ class Menu extends Component{
                 <div></div>
             );
         }
+    }*/
+
+    componentDidMount(){
+        console.log('MenuComponent componentDidMount is invoked.');
     }
     render(){
+        console.log('MenuComponent render is invoked');
         const menu = this.props.dishes.map((dish) => {
             return(
                 <div key = {dish.id} className="col-12 col-md-5 m-1">
@@ -54,10 +66,15 @@ class Menu extends Component{
                     {menu}
                 </div>
                 <div className="row">
-                    {this.renderDish(this.state.selectedDish)}
-                </div>    
+                    <DishdetailedComponent dish={this.state.selectedDish} />
+                </div>  
             </div>
+                    
+           
+            
+           
         );
+        
     }
 }
 

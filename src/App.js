@@ -15,14 +15,15 @@ class App extends Component {
     };
   }
   render(){
+    console.log(this.state.dishes);
     return (
       <div>
         <Navbar dark color = "primary">
-        <div className="container">
-          <NavbarBrand href="/">Restaurant ConFusion</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu dishes = { this.state.dishes } />
+          <div className="container">
+            <NavbarBrand href="/">Restaurant ConFusion</NavbarBrand>
+          </div>
+        </Navbar>
+        <Menu dishes = { this.state.dishes } />
       </div>
     );
   }
