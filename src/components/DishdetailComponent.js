@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Card, CardImg, CardBody, CardText, CardTitle, Media, ListGroupItem, ListGroup} 
+import {Card, CardImg, CardBody, CardText, CardTitle, Media, ListGroupItem, ListGroup, Breadcrumb,BreadcrumbItem} 
 from 'reactstrap';
+import {Link} from 'react-router-dom';
 import '../App.css';
 /*class DishdetailedComponent extends Component{
 
@@ -8,22 +9,22 @@ import '../App.css';
         super(props);
     }*/
 
-    function RenderDish({dish}){
-        if(dish != null){
+    function RenderDish(props){
+        if(props.dish != null){
             return(
                     <div className = "row">
                         <div className = "col-12 col-md-5 m-1">
                             <Card>
-                                <CardImg width="100%" src = {dish.image} alt={dish.name}></CardImg>
+                                <CardImg width="100%" src = {props.dish.image} alt={props.dish.name}></CardImg>
                                 <CardBody>
-                                    <CardTitle>{dish.name}</CardTitle>
-                                    <CardText>{dish.description}</CardText>
+                                    <CardTitle>{props.dish.name}</CardTitle>
+                                    <CardText>{props.dish.description}</CardText>
                                 </CardBody>
                             </Card>   
                         </div>
                         <div className = "col-12 col-md-5 m-1">
                             <h4> Comments </h4>
-                            <RenderComments comments = {dish.comments} />
+                            <RenderComments comments = {props.comment} />
                         </div>
                     </div>
                 );
@@ -41,7 +42,7 @@ import '../App.css';
             return(
                 <ListGroup>
                     {comments.map(c => 
-                        <ListGroupItem key = {c.id} className="borderless">{c.comment}<br/>{c.detail}</ListGroupItem>
+                        <ListGroupItem key = {c.id} className="borderless">{c.comment}<br/>{c.author}{c.date}</ListGroupItem>
                     )}
                 </ListGroup>
             );
@@ -54,9 +55,23 @@ import '../App.css';
     }
 
     const DishdetailedComponent = (props) =>{
+        if(props.dish != null)
         return(
             <div className = "container">
-                <RenderDish dish = {props.dish} />
+               <div className = "row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem> 
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem> 
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                    <RenderDish dish={props.dish} comment={props.comments} />
+                </div>
             </div>
         );
 
