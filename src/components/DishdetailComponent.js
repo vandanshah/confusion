@@ -3,6 +3,7 @@ import {Card, CardImg, CardBody, CardText, CardTitle, Media, ListGroupItem, List
 from 'reactstrap';
 import {Link} from 'react-router-dom';
 import '../App.css';
+import CommentForm from './CommentFormComponent';
 /*class DishdetailedComponent extends Component{
 
     constructor(props){
@@ -25,6 +26,7 @@ import '../App.css';
                         <div className = "col-12 col-md-5 m-1">
                             <h4> Comments </h4>
                             <RenderComments comments = {props.comment} />
+                            <CommentForm />
                         </div>
                     </div>
                 );
